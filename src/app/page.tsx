@@ -12,13 +12,13 @@ export default function HomePage() {
       </header>
 
       <section className="max-w-7xl mx-auto px-6 py-24 text-center">
-        <div className="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-3 py-1 text-xs text-zinc-400 mb-6">
-          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-          AI v2.0 - Copilot Generates Workflows from English
+      
+                  <div className="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-3 py-1 text-xs text-zinc-400">
+          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span> Built for Supabase • Works with any Postgres
         </div>
-        <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-          AI Builds Your<br />
-          <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Queue & Cron</span> Workflows
+        <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mt-6">
+          One control plane for<br />
+          <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">all your backend jobs.</span>
         </h1>
         <p className="mt-6 text-lg text-zinc-400 max-w-2xl mx-auto">
           Type "When Stripe fails, retry then Slack me" - AI generates the canvas, queue, and vault wiring. No Redis. Just Postgres.
