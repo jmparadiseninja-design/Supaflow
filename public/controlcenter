@@ -1,1 +1,166 @@
-edge://external-file/supaflow_x5f_dark_x5f_dashboard.html
+/* SupaFlow Dark Theme - Matches supaflow-theta.vercel.app landing page */
+/* Drop this into app/globals.css or import in your dashboard layout */
+
+:root {
+  --sf-bg: #0A1210;
+  --sf-bg-card: #111A15;
+  --sf-bg-input: #151E1A;
+  --sf-bg-hover: #1A2620;
+  --sf-border: rgba(255,255,255,0.06);
+  --sf-border-strong: rgba(46, 235, 154, 0.3);
+  --sf-green: #2EEB9A;
+  --sf-green-dim: rgba(46, 235, 154, 0.1);
+  --sf-text: #EDEDE9;
+  --sf-text-muted: #8A9A8E;
+  --sf-text-dim: #5A6A5E;
+}
+
+body {
+  background: var(--sf-bg);
+  color: var(--sf-text);
+  font-family: 'Geist', 'Inter', system-ui, sans-serif;
+}
+
+/* Main Control Center Container */
+.supaflow-control-center {
+  min-height: 100vh;
+  background: var(--sf-bg);
+  padding: 24px;
+}
+
+/* Header */
+.sf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--sf-border);
+}
+
+.sf-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.sf-badge {
+  background: var(--sf-green-dim);
+  border: 1px solid var(--sf-border-strong);
+  color: var(--sf-green);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* AI Copilot - The recording-friendly input */
+.sf-copilot {
+  background: var(--sf-bg-card);
+  border: 2px solid var(--sf-border-strong);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 30px rgba(46, 235, 154, 0.08), 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.sf-copilot-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--sf-green);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sf-copilot-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--sf-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.sf-copilot-input-wrapper {
+  background: var(--sf-bg);
+  border: 1px solid var(--sf-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.sf-copilot-input-wrapper:focus-within {
+  border-color: var(--sf-green);
+  box-shadow: 0 0 0 3px var(--sf-green-dim);
+}
+
+.sf-copilot-input {
+  background: transparent;
+  border: none;
+  color: var(--sf-text);
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.sf-copilot-input::placeholder {
+  color: var(--sf-text-muted);
+}
+
+.sf-copilot-hint {
+  font-size: 11px;
+  color: var(--sf-text-dim);
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+/* Cards Grid */
+.sf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.sf-card {
+  background: var(--sf-bg-card);
+  border: 1px solid var(--sf-border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+.sf-card:hover {
+  background: var(--sf-bg-hover);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.sf-card-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sf-text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sf-card-label.green {
+  color: var(--sf-green);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* For screen recording - High contrast mode */
+@media (prefers-contrast: more) {
+  .sf-copilot-input-wrapper {
+    border-width: 2px;
+  }
+}
