@@ -27,6 +27,16 @@ npm run dev
 - Paper-trading/research only
 - Local demo profile only; no real account system yet
 - Public market data and external chart links
+- TradingView Pine Script strategy: [tradingview/supaflow_momentum.pine](./tradingview/supaflow_momentum.pine)
+
+## Use the strategy in TradingView
+
+1. Open a chart for the symbol and timeframe you want to test.
+2. Open **Pine Editor**, paste in `tradingview/supaflow_momentum.pine`, and select **Add to chart**.
+3. Review the results in **Strategy Tester**. Adjust parameters in the script settings as needed.
+4. To keep it in your account, save it as a private script. Publishing publicly is optional and makes the script visible according to TradingView's publishing rules.
+
+The script is a long-only SMA/RSI strategy with default 9/21 SMA lengths, a 14-period RSI entry filter, a 2% close-based stop, and a 4% close-based target. It is for educational backtesting only. TradingView executes on real chart data and its fills, fees, slippage, and results will differ from this app's synthetic-data backtests. It does not place live orders.
 
 ## Legal and public release
 

@@ -1,0 +1,47 @@
+//@version=6
+strategy(
+     "Supaflow Momentum — SMA + RSI",
+     overlay = true,
+     initial_capital = 10000,
+     default_qty_type = strategy.percent_of_equity,
+     default_qty_value = 100,
+     pyramiding = 0,
+     process_orders_on_close = true
+)
+
+fastLength = input.int(9, "Fast SMA length", minval = 1)
+slowLength = input.int(21, "Slow SMA length", minval = 2)
+rsiLength = input.int(14, "RSI length", minval = 1)
+rsiEntryCeiling = input.float(72, "Maximum RSI for entry", minval = 1, maxval = 100)
+rsiExitLevel = input.float(78, "RSI exit level", minval = 1, maxval = 100)
+stopLossPct = input.float(2.0, "Stop loss (%)", minval = 0.1, step = 0.1) / 100
+takeProfitPct = input.float(4.0, "Take profit (%)", minval = 0.1, step = 0.1) / 100
+
+fastSma = ta.sma(close, fastLength)
+slowSma = ta.sma(close, slowLength)
+rsiValue = ta.rsi(close, rsiLength)
+crossUp = ta.crossover(fastSma, slowSma)
+
+longEntry = crossUp and rsiValue < rsiEntryCeiling
+inLong = strategy.position_size > 0
+entryPrice = strategy.position_avg_price
+stopPrice = entryPrice * (1 - stopLossPct)
+targetPrice = entryPrice * (1 + takeProfitPct)
+
+longExit = inLong and (
+     fastSma < slowSma or
+     rsiValue > rsiExitLevel or
+     close <= stopPrice or
+     close >= targetPrice
+)
+
+if longEntry and not inLong
+    strategy.entry("Long", strategy.long)
+
+if longExit
+    strategy.close("Long", comment = "Exit")
+
+plot(fastSma, "Fast SMA", color = color.aqua)
+plot(slowSma, "Slow SMA", color = color.orange)
+plotshape(longEntry and not inLong, title = "Long entry", style = shape.triangleup, location = location.belowbar, color = color.lime, size = size.tiny)
+plotshape(longExit, title = "Exit", style = shape.triangledown, location = location.abovebar, color = color.red, size = size.tiny)
